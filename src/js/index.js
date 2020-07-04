@@ -10,7 +10,7 @@ window.onload = function () {
         onSlideChangeStart: function (swiper) {
             // 更改颜色 
             var pic = document.getElementById("pic")
-            changeColor(swiper.activeLoopIndex, getStyle(pic, 'backgroundColor'))
+            changeColor(swiper.activeLoopIndex, getStyle(pic, "backgroundColor"))
         },
     });
     $('.arrow-left').on('click', function (e) {
@@ -21,7 +21,7 @@ window.onload = function () {
         e.preventDefault()
         mySwiper.swipeNext()
     })
-    var changeColor = function (index,oldColor) {
+    var changeColor = function (index, oldColor) {
         var img = document.createElement('img');
         var canvas = document.createElement('canvas');
 
@@ -29,11 +29,8 @@ window.onload = function () {
 
         canvas.width = img.width;
         canvas.height = img.height;
-
         canvas.style.display = "none";
-
         var context = canvas.getContext('2d');
-
         context.drawImage(img, 0, 0, canvas.width, canvas.height);
 
         var data = context.getImageData(0, 0, img.width, img.height).data;
@@ -41,6 +38,7 @@ window.onload = function () {
         var gtotle = 0;
         var btotle = 0;
         var atotle = 0;
+        var rgbaArr = [];
         for (var i = 0; i < data.length; i++) {
             var t = i % 4;
             if (t == 0) {
@@ -52,17 +50,18 @@ window.onload = function () {
             } else if (t == 3) {
                 atotle += data[i];
             }
+            // rgbaArr[i] += data[i];
         }
         var r = parseInt(rtotle / (data.length / 4))
         var g = parseInt(gtotle / (data.length / 4))
         var b = parseInt(btotle / (data.length / 4))
-        var a = parseInt(atotle / (data.length / 4))
-        // console.log(r, g, b, a)
-        var color = "rgba(" + r + "," + g + "," + b + "," + a + ")";
-
-        // var pic = document.getElementById("pic")
-        // console.log(getStyle(pic,'backgroundColor'))
-        $('#pic').css('background', color)
+        var newColor = "rgb(" + r + "," + g + "," + b + ")";
+        var pic = document.getElementById('pic');
+        // 立即改变颜色
+        // $('#pic').css('background', newColor);
+        moveColor(pic, newColor,function(){
+            console.log("颜色改变完了")
+        });
 
         // 获取样式的兼容处理
         function getStyle(ele, attr) {
@@ -74,21 +73,32 @@ window.onload = function () {
         }
 
         //缓慢改变背景颜色的封装
-        // function move(ele, data, cb) {
-        //     clearInterval(ele.t);
-        //     ele.t = setInterval(function () {
-        //         var iNow = parseInt(getStyle(ele, i));
-        //         var speed = (data[i] - iNow) / 8;
-        //         speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+        function moveColor(ele, newColor, cb) {
+            clearInterval(ele.t);
+            newColor = newColor.slice(4, this.length - 1).split(",");
+            ele.t = setInterval(function () {
+                var oldColor = getStyle(ele, "backgroundColor");
+                oldColor = oldColor.slice(4, this.length - 1).split(", ");
+                var r = (newColor[0] - oldColor[0]) / 80;
+                var g = (newColor[1] - oldColor[1]) / 80;
+                var b = (newColor[2] - oldColor[2]) / 80;
+                r = r > 0 ? Math.ceil(r) : Math.floor(r);
+                g = g > 0 ? Math.ceil(g) : Math.floor(g);
+                b = b > 0 ? Math.ceil(b) : Math.floor(b);
 
-        //         if (data[i] != iNow) {
-        //             tr = false;
-        //         }
-        //         if (tr) {
-        //             clearInterval(ele.t);
-        //             cb && cb();
-        //         }
-        //     }, 16)
-        // }
+                ele.style.backgroundColor = "rgb(" + (r + parseInt(oldColor[0])) + "," + (g + parseInt(oldColor[1])) + "," + (b + parseInt(oldColor[2])) + ")";
+                var tr = true;
+                for (var i = 0; i < 3; i++) {
+                    if (oldColor[i] != newColor[i]) {
+                        tr = false;
+                        break;
+                    }
+                }
+                if (tr) {
+                    clearInterval(ele.t);
+                    cb && cb();
+                }
+            }, 16)
+        }
     }
 } 
