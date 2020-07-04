@@ -2,7 +2,7 @@ window.onload = function () {
     var mySwiper = new Swiper('.swiper-container', {
         loop: true,
         autoplay: 2000,
-        speed: 2000,
+        speed: 1000,
         autoplayDisableOnInteraction: false,
         pagination: '.pagination',
         paginationClickable: true,
@@ -81,7 +81,7 @@ window.onload = function () {
                     clearInterval(ele.t);
                     cb && cb();
                 }
-            }, 16)
+            }, 8)
         }
     }
 } 
