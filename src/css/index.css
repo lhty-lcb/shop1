@@ -72,6 +72,7 @@ li{
     float: left;
     margin-top: 30px;
     margin-left: 10px;
+    position: relative;
 }
 .header-con .search-div .search-icon{
     float: left;
@@ -86,6 +87,27 @@ li{
     font-size: 12px;
     height: 18px;
     width: 370px;
+}
+.header-con .search-div .search-list{
+    width: 98%;
+    max-height: 192px;
+    background-color: #fff;
+    padding: 0 10px;
+    margin-top: 10px;
+    position: absolute;
+    z-index: 10;
+    overflow: hidden;
+}
+.header-con .search-div .search-list li{
+    height: 24px;
+    color:#666;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 24px;
+    cursor: pointer;
+}
+.header-con .search-div .search-list li:hover{
+    background-color: #efefef;
 }
 .header-con .search-btn{
     background-color: #f90;
