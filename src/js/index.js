@@ -34,32 +34,18 @@ window.onload = function () {
         context.drawImage(img, 0, 0, canvas.width, canvas.height);
 
         var data = context.getImageData(0, 0, img.width, img.height).data;
-        var rtotle = 0;
-        var gtotle = 0;
-        var btotle = 0;
-        var atotle = 0;
-        var rgbaArr = [];
+        var rgbaArr = [0, 0, 0, 0];
         for (var i = 0; i < data.length; i++) {
             var t = i % 4;
-            if (t == 0) {
-                rtotle += data[i];
-            } else if (t == 1) {
-                gtotle += data[i];
-            } else if (t == 2) {
-                btotle += data[i];
-            } else if (t == 3) {
-                atotle += data[i];
-            }
-            // rgbaArr[i] += data[i];
+            rgbaArr[t] += data[i];
         }
-        var r = parseInt(rtotle / (data.length / 4))
-        var g = parseInt(gtotle / (data.length / 4))
-        var b = parseInt(btotle / (data.length / 4))
-        var newColor = "rgb(" + r + "," + g + "," + b + ")";
+        for (var i = 0; i < rgbaArr.length; i++) {
+            rgbaArr[i] = parseInt(rgbaArr[i] / (data.length / 4))
+        }
         var pic = document.getElementById('pic');
         // 立即改变颜色
         // $('#pic').css('background', newColor);
-        moveColor(pic, newColor,function(){
+        moveColor(pic, rgbaArr, function () {
             console.log("颜色改变完了")
         });
 
@@ -75,18 +61,15 @@ window.onload = function () {
         //缓慢改变背景颜色的封装
         function moveColor(ele, newColor, cb) {
             clearInterval(ele.t);
-            newColor = newColor.slice(4, this.length - 1).split(",");
             ele.t = setInterval(function () {
                 var oldColor = getStyle(ele, "backgroundColor");
                 oldColor = oldColor.slice(4, this.length - 1).split(", ");
-                var r = (newColor[0] - oldColor[0]) / 80;
-                var g = (newColor[1] - oldColor[1]) / 80;
-                var b = (newColor[2] - oldColor[2]) / 80;
-                r = r > 0 ? Math.ceil(r) : Math.floor(r);
-                g = g > 0 ? Math.ceil(g) : Math.floor(g);
-                b = b > 0 ? Math.ceil(b) : Math.floor(b);
-
-                ele.style.backgroundColor = "rgb(" + (r + parseInt(oldColor[0])) + "," + (g + parseInt(oldColor[1])) + "," + (b + parseInt(oldColor[2])) + ")";
+                var rgbArr = [0, 0, 0];
+                for (var i = 0; i < oldColor.length; i++) {
+                    rgbArr[i] = (newColor[i] - oldColor[i]) / 80;
+                    rgbArr[i] = rgbArr[i] > 0 ? Math.ceil(rgbArr[i]) : Math.floor(rgbArr[i]);
+                }
+                ele.style.backgroundColor = "rgb(" + (rgbArr[0] + parseInt(oldColor[0])) + "," + (rgbArr[1] + parseInt(oldColor[1])) + "," + (rgbArr[2] + parseInt(oldColor[2])) + ")";
                 var tr = true;
                 for (var i = 0; i < 3; i++) {
                     if (oldColor[i] != newColor[i]) {
