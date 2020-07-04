@@ -821,3 +821,124 @@ li{
     top: 11px;
     background-color: #ccc;
 }
+/* footer区域 */
+#footer{
+    width: 100%;
+    /* height: 98px; */
+}
+.footer-cont{
+    /* height: 98px; */
+    width: 1250px;
+    margin: 0 auto;
+    padding-left: 30px;
+}
+.footer-cont ul{
+    width: 1250px;
+    height: 98px;
+    margin: 0;
+    display: flex;
+}
+.footer-cont .list-box{
+    width: 250px;
+    height: 48px;
+    float: left;
+    margin: auto;
+}
+.footer-cont img{
+    float: left;
+    margin-right: 8px;
+}
+.footer-cont .list{
+    float: left;
+}
+.footer-cont .list-top{ 
+    clear: both;
+    height: 24px;
+    line-height: 24px;
+    color:#333;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+}
+.footer-cont .list-top:hover{
+    color: #f60;
+}
+.footer-cont .list-bottom{ 
+    clear: both;
+    height: 24px;
+    line-height: 24px;
+    font-size: 12px;
+    color:#545454;
+    margin: 0;
+}
+.footer-cont .foot-server{
+    width: 1190px;
+    height: 180px;
+    border-top: 1px solid #eaeaea;
+    clear: both;
+}
+.footer-cont dl{
+    width: 210px;
+    height: 160px;
+    float: left;
+}
+.footer-cont dl:last-child{
+    width: 90px;
+}
+.footer-cont dl:last-child a{
+    line-height: 18px;
+}
+.footer-cont dl dt{
+    width: 210px;
+    height: 35px;
+    font-size: 14px;
+    line-height: 35px;
+    color:#545454;
+}
+.footer-cont dl dd a{
+    font-size: 12px;
+    height: 22px;
+    line-height: 22px;
+    color:#333;
+}
+.footer-cont dl dd a:hover{
+    color:#F60;
+}
+.msg-box{
+    clear: both;
+    margin: 0 auto;
+    width:100%;
+    text-align: center;
+    background-color: #fff;
+    padding-top:15px;
+}
+.msg-box p{
+    height: 25px;
+    line-height: 25px;
+    margin: 0;
+    font-size: 0;
+    color:#999;
+}
+.msg-box a{
+    color:#999;
+    font-size: 12px;
+}
+.msg-box p.deep a{
+    color:#666
+}
+.msg-box span{
+    padding: 0 8px;
+    font-size: 12px;
+}
+.msg-box .gwab-box{
+    position: relative;
+    padding-left: 25px;
+}
+.msg-box .gwab{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    background: url(../images/msg/1.png) 0 0 no-repeat;
+}
