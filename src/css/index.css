@@ -1,19 +1,47 @@
+body,html{
+    width: 100%;
+    min-width: 1250px;
+    position: relative;
+}
 #box{
     background-color: #f2f2f2;
+    width: 100%;
+    min-width: 1250px;
 }
 li{ 
     list-style: none;
 }
-#nav-right{
+.shadow{
+    width: 100%;
+    height: 2000px;
+    background-color: rgba(0 ,0 , 0, .3);
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    left:0;
+}
+.login{
+    width: 380px;
+    height: 352px;
+    background-color: rgba(0, 0, 0, .5);
+    position: fixed;
+    left: 0px;
+    top: 0px;
+}
+.register{
+
+}
+/* #nav-right{
     height: 100%;
     width: 35px;
     background-color: rgb(51, 51, 51);
     position: fixed;
     right: 0;
     top: 0;
-}
+} */
 /* nav */
 #nav{
+    width: 100%;
     height: 36px;
     background-color: #f5f5f5;
     border-bottom: 1px solid #eee;
@@ -24,34 +52,98 @@ li{
     height: 36px;
     /* line-height: 36px; */
     font-size: 12px;
+    position: relative;
 }
-#nav .nav-con  li{
+#nav .nav-con li{
     float: left;
-    width: 85px;
     cursor: pointer;
     position: relative;
+}
+#nav .nav-con ul{
+    width: 323px;
+    height: 36px;
+    float: left;
+}
+#nav .nav-con ul li{
+    width: 78px;
+    line-height: 36px;
 }
 #nav .nav-con  li:hover{
     color: #f60;
 }
-#nav .nav-con  li .address-icon{
+#nav .nav-con .car{
+    height: 36px;
+    position: relative;
+    z-index: 6;
+    top: 0;
+    left: 0;
+}
+#nav .nav-con .car .car-a{
+    position: absolute;
+    top: 0;
+    left:0;
+    width: 70px;
+    height: 36px;
+    border: 1px solid #d3d3d3;
+    border-bottom: 1px solid #fff;
+    z-index: 5;
+    display: none;
+    background-color: #fff;
+    color:#f60
+}
+#nav .nav-con .car:hover .car-a{
+    display: block;
+}
+#nav .nav-con .nav-car{
+    width: 250px;
+    height: 350px;
+    top:35px;
+    background-color: #fff;
+    position: absolute;
+    z-index: 2;
+    display: none;
+    border: 1px solid #d3d3d3;
+}
+#nav .nav-con .nav-car .car-box{
+    margin: auto;
+    text-align: center;
+    color:#bbb;
+    margin-top: 80px;
+}
+#nav .nav-con .nav-car .img{
+    width: 150px;
+    height: 96px;
+    background: url(../images/pic2.png) 0 -291px;
+    margin: 0 auto 20px;
+}#nav .nav-con .nav-car .btn-warning{
+    margin-top: 10px;
+}
+#nav .nav-con li .address-icon{
     width: 12px;
     height: 15px;
-    display: block;
+    display: inline-block;
     background: url(../images/pic.png) -387px -183px;
-    float: left;
     margin-right: 5px;
 }
 #nav .nav-con ol{
     float: right;
+    height: 36px;
+    width: 650px;
+}
+#nav .nav-con ol,ul{
+    margin: 0;
 }
 #nav .nav-con ol li{
     width: 70px;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
 }
 /* header */
 #header{
     height: 110px;
     background-color: #fff;
+    clear: both;
 }
 #header .header-con{
     width: 1190px;

@@ -82,16 +82,15 @@ window.onload = function () {
             }, 8)
         }
     }
-    // https://ds.suning.com/ds/his/new/-hao-0-1_0-autoComplateCallback_184b31b125a59d8c382d3d8382d23350.jsonp?callback=autoComplateCallback_184b31b125a59d8c382d3d8382d23350&_=1593854098216
     $('.search').on('keyup', function () {
-        $('.search-list').css('display','block')
+        $('.search-list').css('display', 'block')
         var text = $('.search').eq(0).val();
         var cbName = "lcb" + Math.random().toString().slice(2) + (new Date).getTime();
         $.ajax({
             url: 'https://ds.suning.com/ds/his/new/-' + text + '-0-1_0-' + cbName + '.jsonp?',
             dataType: 'jsonp',
-            jsonpCallback:cbName,
-            success:function(data){
+            jsonpCallback: cbName,
+            success: function (data) {
                 var ul = $('.search-list');
                 ul.empty();
                 $.each(data.words, function (index, value) {
@@ -99,11 +98,25 @@ window.onload = function () {
                         ul.append("<li>" + value.keyword + "</li>");
                     }
                 })
-                $(".search-list li").click(function(){
+                $(".search-list li").click(function () {
                     $('.search').eq(0).val($(this).text())
-                    $('.search-list').css('display','none')
+                    $('.search-list').css('display', 'none')
                 })
             }
         })
+    })
+    $('.car').mouseenter(function () {
+        $('.nav-car').slideDown('fast');
+    })
+    $('.car').mouseleave(function () {
+        $('.nav-car').slideUp('fast');
+    })
+    $('.btn-warning').click(function () {
+        var div = document.createElement('div');
+        div.className = "shadow";
+        $('body').append(div);
+        $('.nav-car').css('display', 'none');
+        var div = document.createElement('div');
+        
     })
 } 
