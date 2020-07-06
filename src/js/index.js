@@ -1,5 +1,8 @@
 window.onload = function () {
     window.history.replaceState(null, null, window.location.href);
+    var div = document.createElement('div');
+    div.className = "shadow";
+    $('body').append(div);
     var mySwiper = new Swiper('.swiper-container', {
         loop: true,
         autoplay: 2000,
@@ -113,21 +116,44 @@ window.onload = function () {
         $('.nav-car').slideUp('fast');
     })
     $('.btn-warning').click(function () {
-        var div = document.createElement('div');
-        div.className = "shadow";
-        $('body').append(div);
         $('.nav-car').css('display', 'none');
         var top = (document.documentElement.clientHeight - 380) / 2;
         var left = (document.documentElement.clientWidth - 352) / 2;
         $('.login').css({ 'display': 'block', 'left': left, 'top': top })
+        $('.shadow').css('display','block');
     })
+
     $(window).resize(function () {
         var top = (document.documentElement.clientHeight - 380) / 2;
         var left = (document.documentElement.clientWidth - 352) / 2;
         $('.login').css({ 'left': left, 'top': top })
+        $('.register').css({ 'left': left, 'top': top })
     })
     $('.cancel').click(function () {
         $('.login').css('display', 'none');
         $('.shadow').css('display', 'none');
+        $('.register').css('display', 'none');
+    })
+    $('.re').click(function () {
+        var top = (document.documentElement.clientHeight - 380) / 2;
+        var left = (document.documentElement.clientWidth - 352) / 2;
+        $('.login').css('display', 'none');
+        $('.register').css('display', 'block');
+        $('.register').css({ 'left': left, 'top': top })
+        $('.shadow').css('display','block');
+    })
+    $('.lg').click(function () {
+        var top = (document.documentElement.clientHeight - 380) / 2;
+        var left = (document.documentElement.clientWidth - 352) / 2;
+        $('.login').css('display', 'block');
+        $('.register').css('display', 'none');
+        $('.login').css({ 'left': left, 'top': top })
+        $('.shadow').css('display','block');
+    })
+    $('.nav-login').click(function(){
+        $('.lg').trigger('click');
+    })
+    $('.nav-register').click(function(){
+        $('.re').trigger('click');
     })
 } 

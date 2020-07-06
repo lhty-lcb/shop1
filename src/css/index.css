@@ -2,6 +2,7 @@ body,html{
     width: 100%;
     min-width: 1250px;
     position: relative;
+    user-select: none;
 }
 #box{
     background-color: #f2f2f2;
@@ -13,12 +14,13 @@ li{
 }
 .shadow{
     width: 100%;
-    height: 2000px;
+    height: 3000px;
     background-color: rgba(0 ,0 , 0, .3);
     position: absolute;
-    z-index: 5;
+    z-index: 20;
     top: 0;
     left:0;
+    display: none;
 }
 .login{
     width: 380px;
@@ -27,16 +29,16 @@ li{
     position: fixed;
     left: 0px;
     top: 0px;
-    z-index: 10;
+    z-index: 21;
     display: none;
     padding: 5px;
 }
-.login .login-con{
+.login-con{
     width: 370px;
     height: 342px;
     background-color: #fff;
 }
-.login .login-con .lg-re{
+.login-con .lg-re{
     width: 330px;
     height: 41px;
     padding: 8px 0;
@@ -46,7 +48,7 @@ li{
     margin: 0 auto;
     cursor: pointer;
 }
-.login .login-con .lg{
+.login-con .lg{
     float: left;
     width: 165px;
     height: 24px;
@@ -54,25 +56,25 @@ li{
     font-weight: bold;
     border-right: 1px solid #ddd;
 }
-.login .login-con .re{
+.login-con .re{
     width: 164px;
     float: left;
     position: relative;
 }
-.login .login-con .re:hover{
+.login-con .re:hover{
     color: #f60;
 }
-.login .login-con .cancel{
+.login-con .cancel{
     color: #aaa;
     position: absolute;
     top: 13px;
     right: 10px;
     cursor: pointer;
 }
-.login .login-con .cancel:hover{
+.login-con .cancel:hover{
     color: #333;
 }
-.login .login-con .war{
+.login-con .war{
     width: 328px;
     height: 24px;
     margin: 10px auto 0;
@@ -85,7 +87,7 @@ li{
     padding-left: 35px;
     line-height: 18px;
 }
-.login .login-con .war i{
+.login-con .war i{
     position: absolute;
     width: 16px;
     height: 16px;
@@ -93,10 +95,10 @@ li{
     left: 10px;
     top: 3px;
 }
-.login .login-con .name-box{
+.login-con .name-box{
     position: relative;
 }
-.login .login-con .name-box i{
+.login-con .name-box i{
     width: 36px;
     height: 36px;
     position: absolute;
@@ -104,10 +106,10 @@ li{
     left: 20px;
     background: url(../images/pic3.png) -67px 0px no-repeat;
 }
-.login .login-con .pass-box{
+.login-con .pass-box{
     position: relative;
 }
-.login .login-con .pass-box i{
+.login-con .pass-box i{
     width: 36px;
     height: 36px;
     position: absolute;
@@ -115,7 +117,7 @@ li{
     left: 20px;
     background: url(../images/pic3.png) 0 -67px no-repeat;
 }
-.login .login-con #username{
+.login-con #username{
     display: block;
     margin: 5px auto 20px;
     width: 328px;
@@ -123,7 +125,7 @@ li{
     padding: 0 32px 0 36px;
     outline: none;
 }
-.login .login-con #userpass{
+.login-con #userpass{
     display: block;
     margin: 5px auto 20px;
     width: 328px;
@@ -131,21 +133,22 @@ li{
     padding: 0 32px 0 36px;
     outline: none;
 }
-.login .login-con .msg-box{
+.login-con .msg-box{
     width: 330px;
     height: 35px;
     text-align: left;
     line-height: 35px;
     padding: 0px;
 }
-.login .login-con .msg-box input{
+.login-con .msg-box input{
     float: left;
     margin-top: 11px;
+    margin-right: 5px;
 }
-.login .login-con .msg-box label{
+.login-con .msg-box label{
     font-size: 12px;
 }
-.login .login-con .msg-box span{
+.login-con .msg-box span{
     float: right;
 }
 #login-btn{
@@ -162,7 +165,124 @@ li{
     outline: none;
 }
 .register{
-
+    width: 380px;
+    height: 441px;
+    background-color: rgba(0, 0, 0, .4);
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    z-index: 22;
+    display: none;
+    padding: 5px;
+}
+.register .reg-con{
+    height: 431px;
+}
+.register .re{
+    color: #f60;
+    font-weight: 700;
+}
+.register .lg{
+    color: #000;
+    font-weight: normal;
+}
+.register .phone-box{
+    width: 330px;
+    height: 40px;
+    margin: 10px auto 30px;
+    line-height: 35px;
+    border: 1px solid #ccc;
+    padding: 2px 0;
+}
+.register .phone-box label{
+    text-align: center;
+    width: 76px;
+    height: 38px;
+    color: #222;
+    font-size: 12px;
+    font-weight: normal;
+}
+.register .phone-box input{
+    border: none;
+    height: 30px;
+    width: 241px;
+    font-size: 12px;
+    outline: none;
+}
+.register .check-box{
+    width: 330px;
+    height: 40px;
+    margin: 0 auto 30px;
+    line-height: 35px;
+    border: 1px solid #ccc;
+}
+.register .check-box label{
+    text-align: center;
+    width: 76px;
+    height: 38px;
+    color: #222;
+    font-size: 12px;
+    font-weight: normal;
+}
+.register .check-box input{
+    border: none;
+    height: 30px;
+    width: 140px;
+    font-size: 12px;
+    outline: none;
+}
+.register .check-box .get-check-code{
+    width: 102px;
+    height: 38px;
+    float: right;
+    border-left: 1px solid #bbb;
+    font-size: 14px;
+}
+.register .check-box .get-check-code:hover{
+    color: #f60;
+}
+.register .set-pass-box{
+    width: 330px;
+    height: 40px;
+    margin: 0 auto;
+    line-height: 35px;
+    border: 1px solid #ccc;
+}
+.register .set-pass-box label{
+    text-align: center;
+    width: 76px;
+    height: 38px;
+    color: #222;
+    font-size: 12px;
+    font-weight: normal;
+}
+.register .set-pass-box input{
+    border: none;
+    height: 30px;
+    width: 241px;
+    font-size: 12px;
+    outline: none;
+}
+.register #agree{
+    margin-top: 2px;
+    cursor: pointer;
+}
+.register #agreeMsg{
+    line-height: 18px;
+    margin-top: 20px;
+}
+.register #reg-btn{ 
+    font-size: 20px;
+    color: #fff;
+    background-color: #f60;
+    width: 330px;
+    height: 40px;
+    display: block;
+    margin: 30px auto 0;
+    border: none;
+    border-radius: 2px;
+    font-weight: 700px;
+    outline: none;
 }
 /* #nav-right{
     height: 100%;
@@ -272,6 +392,15 @@ li{
     height: 36px;
     line-height: 36px;
     text-align: center;
+}
+.nav-login,.nav-register{
+    color: #f60;
+}
+#nav .nav-con .nav-login:hover{
+    color:#F20;
+}
+#nav .nav-con .nav-register:hover{
+    color:#F20;
 }
 /* header */
 #header{
@@ -550,7 +679,7 @@ li{
     text-align: center;
     padding: 0;
 }
-#pic .pic-right .top .register{
+#pic .pic-right .top .new-register{
     display: inline-block;
     width: 70px;
     height: 22px;
