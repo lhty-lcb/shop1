@@ -1,4 +1,5 @@
 window.onload = function () {
+    window.history.replaceState(null, null, window.location.href);
     var mySwiper = new Swiper('.swiper-container', {
         loop: true,
         autoplay: 2000,
@@ -116,7 +117,17 @@ window.onload = function () {
         div.className = "shadow";
         $('body').append(div);
         $('.nav-car').css('display', 'none');
-        var div = document.createElement('div');
-        
+        var top = (document.documentElement.clientHeight - 380) / 2;
+        var left = (document.documentElement.clientWidth - 352) / 2;
+        $('.login').css({ 'display': 'block', 'left': left, 'top': top })
+    })
+    $(window).resize(function () {
+        var top = (document.documentElement.clientHeight - 380) / 2;
+        var left = (document.documentElement.clientWidth - 352) / 2;
+        $('.login').css({ 'left': left, 'top': top })
+    })
+    $('.cancel').click(function () {
+        $('.login').css('display', 'none');
+        $('.shadow').css('display', 'none');
     })
 } 
