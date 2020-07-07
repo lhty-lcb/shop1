@@ -1,8 +1,7 @@
 window.onload = function () {
+    // 防止提示保存数据的弹出框
     window.history.replaceState(null, null, window.location.href);
-    var div = document.createElement('div');
-    div.className = "shadow";
-    $('body').append(div);
+    // 轮播图轮播
     var mySwiper = new Swiper('.swiper-container', {
         loop: true,
         autoplay: 2000,
@@ -17,14 +16,17 @@ window.onload = function () {
             changeColor(swiper.activeLoopIndex, getStyle(pic, "backgroundColor"))
         },
     });
+    // 点击轮播图左边的按钮切换到上一张
     $('.arrow-left').on('click', function (e) {
         e.preventDefault()
         mySwiper.swipePrev()
     })
+    // 点击轮播图右边的按钮，切换到下一张
     $('.arrow-right').on('click', function (e) {
         e.preventDefault()
         mySwiper.swipeNext()
     })
+    // 动态改变背景颜色
     var changeColor = function (index, oldColor) {
         var img = document.createElement('img');
         var canvas = document.createElement('canvas');
@@ -86,6 +88,7 @@ window.onload = function () {
             }, 8)
         }
     }
+    // 搜索框动态获取数据
     $('.search').on('keyup', function () {
         $('.search-list').css('display', 'block')
         var text = $('.search').eq(0).val();
@@ -109,51 +112,59 @@ window.onload = function () {
             }
         })
     })
+    // 移入购物车显示购物车
     $('.car').mouseenter(function () {
         $('.nav-car').slideDown('fast');
     })
+    // 移出购物车隐藏购物车
     $('.car').mouseleave(function () {
         $('.nav-car').slideUp('fast');
     })
+    // 点击购物车里的登录按钮显示登录框
     $('.btn-warning').click(function () {
         $('.nav-car').css('display', 'none');
         var top = (document.documentElement.clientHeight - 380) / 2;
         var left = (document.documentElement.clientWidth - 352) / 2;
         $('.login').css({ 'display': 'block', 'left': left, 'top': top })
-        $('.shadow').css('display','block');
+        $('.shadow').css('display', 'block');
     })
-
+    // 当网页的尺寸改变的时候，更改div的位置
     $(window).resize(function () {
         var top = (document.documentElement.clientHeight - 380) / 2;
         var left = (document.documentElement.clientWidth - 352) / 2;
         $('.login').css({ 'left': left, 'top': top })
         $('.register').css({ 'left': left, 'top': top })
     })
+    // 点击取消按钮，将所有的东西隐藏
     $('.cancel').click(function () {
         $('.login').css('display', 'none');
         $('.shadow').css('display', 'none');
         $('.register').css('display', 'none');
     })
+    // 点击展示注册框
     $('.re').click(function () {
         var top = (document.documentElement.clientHeight - 380) / 2;
         var left = (document.documentElement.clientWidth - 352) / 2;
         $('.login').css('display', 'none');
         $('.register').css('display', 'block');
         $('.register').css({ 'left': left, 'top': top })
-        $('.shadow').css('display','block');
+        $('.shadow').css('display', 'block');
     })
+    // 点击显示登录框
     $('.lg').click(function () {
         var top = (document.documentElement.clientHeight - 380) / 2;
         var left = (document.documentElement.clientWidth - 352) / 2;
         $('.login').css('display', 'block');
         $('.register').css('display', 'none');
         $('.login').css({ 'left': left, 'top': top })
-        $('.shadow').css('display','block');
+        $('.shadow').css('display', 'block');
     })
-    $('.nav-login').click(function(){
+    // 点击nav上的登录显示登录框
+    $('.nav-login').click(function () {
         $('.lg').trigger('click');
     })
-    $('.nav-register').click(function(){
+    // 点击nav上的注册显示注册框
+    $('.nav-register').click(function () {
         $('.re').trigger('click');
     })
 } 

@@ -1,6 +1,152 @@
-body{
-    background-color: re;
-    div{
-        font-size: 12px;
+#info{
+    width: 100%;  
+    .info-con{
+        margin: 0 auto;
+        width: 1190px;
+        height: 1094px;
+        margin-top: 10px;        
+        .img-zoom{
+            width: 400px;
+            height: 482px;
+            float: left;
+            .big-img{
+                position: relative;
+                z-index: 5;
+                border: 1px solid #eee;
+                .big-img-box{
+                    width: 400px;
+                    height: 400px;
+                    cursor: move;
+                    img{
+                        width: 400px;
+                        height: 400px;
+                    }
+                    span{
+                        display: block;
+                        width: 200px;
+                        height: 200px;
+                        background-color: #fede4f;
+                        opacity: .5;
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        z-index: 10;
+                        display: none;
+                    }
+                }
+                .show-img-box{
+                    width: 400px;
+                    height: 400px;
+                    overflow: hidden;
+                    position: absolute;
+                    right: -405px;
+                    top: 0;
+                    display: none;
+                    .show-img{
+                        width: 800px;
+                        height: 800px;
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        img{
+                            width: 800px;
+                            height: 800px;
+                        }
+                    }
+                }
+            }
+            .small-img{
+                width: 340px;
+                height: 64px;
+                margin: 9px auto 0;
+                ul{
+                    width: 340px;
+                    height: 64px;
+                    display: block;
+                    li{
+                        width: 64px;
+                        height: 64px;
+                        float: left;
+                        margin: 0 1px;
+                        display: flex;
+                        padding: 2px;
+                        &:hover{
+                            border: 1px solid #f00;
+                            cursor: pointer;
+                        }
+                        img{
+                            width: 60px;
+                            height: 60px;
+                            margin-left: -1px;
+                            margin-top: -1px;
+                        }
+                    }
+                }
+            }
+        }
+        .info-message{
+            width: 790px;
+            height: 1097px;
+            // background-color: gray;
+            float: left;
+            padding: 0 210px 8px 10px;
+            h1{
+                font-size: 16px;
+                line-height: 24px;
+                font-weight: bold;
+                padding-left: 10px;
+            }
+            h2{
+                color: #f60;
+                font-size: 14px;
+                margin-top: 3px;
+                padding-left: 10px;
+            }
+            .price-box{
+                width: 570px;
+                height: 60px;
+                padding-bottom: 8px;
+                .price{
+                    width: 570px;
+                    height: 60px;
+                    padding-top: 12px;
+                    background-color: #fff8f3;
+                    .price-num{
+                        width: 570px;
+                        height: 30px;
+                        padding-left: 10px;
+                        .yigou{
+                            color: #999;
+                            font-size: 12px;
+                            display: block;
+                            height: 30px;
+                            line-height: 30px;
+                            width: 78px;
+                            float: left;
+                            letter-spacing: .5em;
+                        }
+                        .num{
+                            font-size: 30px;
+                            color: red;
+                            position: relative;
+                            padding-left: 15px;
+                            font-weight: bold;
+                            // float: left;
+                            height: 28px;
+                            display: inline-block;
+                            line-height: 28px;
+                            i{
+                                position: absolute;
+                                left: 0;
+                                top: 4px;
+                                background: none;
+                                font-size: 18px;
+                                font-style: normal;
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }

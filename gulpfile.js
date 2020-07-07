@@ -82,7 +82,7 @@ const webserverHandler = () => {
     return gulp.src('./dist')
         .pipe(webserver({
             port: 8090,//端口号
-            open: './pages/index.html',//默认首页
+            open: './pages/message.html',//默认首页
             livereload: true,//自动刷新
             // proxies: [
             //     {
