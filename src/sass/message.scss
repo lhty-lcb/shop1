@@ -3,7 +3,7 @@
     .info-con{
         margin: 0 auto;
         width: 1190px;
-        height: 1094px;
+        height: 500px;
         margin-top: 10px;        
         .img-zoom{
             width: 400px;
@@ -71,14 +71,14 @@
                         display: flex;
                         padding: 2px;
                         &:hover{
-                            border: 1px solid #f00;
+                            border: 2px solid #f00;
                             cursor: pointer;
                         }
                         img{
                             width: 60px;
                             height: 60px;
-                            margin-left: -1px;
-                            margin-top: -1px;
+                            margin-left: -2px;
+                            margin-top: -2px;
                         }
                     }
                 }
@@ -86,8 +86,7 @@
         }
         .info-message{
             width: 790px;
-            height: 1097px;
-            // background-color: gray;
+            height: 500px;
             float: left;
             padding: 0 210px 8px 10px;
             h1{
@@ -131,7 +130,6 @@
                             position: relative;
                             padding-left: 15px;
                             font-weight: bold;
-                            // float: left;
                             height: 28px;
                             display: inline-block;
                             line-height: 28px;
@@ -145,6 +143,137 @@
                             }
                         }
                     }
+                }
+            }
+        }
+        .guige-box{
+            width: 570px;
+            margin-top: 50px;
+            height: 120px;
+            span{
+                color: #999;
+                font-size: 12px;
+                display: block;
+                height: 42px;
+                line-height: 30px;
+                width: 82px;
+                float: left;
+                letter-spacing: 2em;
+                padding-left: 10px;
+            }
+            .guige{
+                width: 486px;
+                height: 100px;
+                float: left;
+                li{
+                    float: left;
+                    width: 182px;
+                    height: 42px;
+                    margin: 5px;
+                    border: 1px solid #999;
+                    position: relative;
+                    cursor: pointer;
+                    &:hover{
+                        border: 1px solid #f60;
+                    }
+                    img{
+                        width: 38px;
+                        height: 38px;
+                        float: left;
+                        margin-right: 6px;
+                    }
+                    p{
+                        float: left;
+                        height: 38px;
+                        line-height: 38px;
+                        color: #666;
+                        font-size: 12px;
+                    }
+                    i{
+                        width: 12px;
+                        height: 12px;
+                        position: absolute;
+                        top: 29px;
+                        right: -1px;
+                        background: url(../images/pic4.png) -1038px -540px;
+                        display: none;
+                    }
+                }
+                .select{
+                    border: 1px solid #ff5500;
+                    i{
+                        display: block;
+                    }
+                }
+            }
+        }
+        .number{
+            width: 570px;
+            height: 30px;
+            span{
+                color: #999;
+                font-size: 12px;
+                display: block;
+                height: 42px;
+                line-height: 30px;
+                width: 82px;
+                float: left;
+                letter-spacing: 2em;
+                padding-left: 10px;
+            }
+            .number-button{
+                width: 198px;
+                height: 30px;
+                .less{
+                    float: left;
+                    width: 22px;
+                    height: 30px;
+                    color: #000;
+                }
+                .produceNum{
+                    float: left;
+                    width: 37px;
+                    height: 30px;
+                    padding: 5px;
+                    border: 1px solid #ddd;
+                    margin: 0 5px;
+                    outline: none;
+                    text-align: center;
+                }
+                .more{
+                    float: right;
+                    width: 22px;
+                    height: 30px;
+                    color: #000;
+                }
+            }
+        }
+        .buy{
+            button{
+                color: white;
+                font-size: 16px;
+                font-weight: bold;
+                text-align: center;
+                border: none;
+                border-radius: 3px;
+                margin-top: 20px;
+                outline: none;
+            }
+            .fast-buy{
+                width: 115px;
+                height: 40px;
+                background-color: #663200;
+                margin-right: 10px;
+                &:hover{
+                    background-color: #4b2500;
+                }
+            }
+            .add-car{
+                width: 135px;
+                height: 40px;
+                background-color: #f50;
+                &:hover{
+                    background-color: #ff3000;
                 }
             }
         }

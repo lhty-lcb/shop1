@@ -96,9 +96,29 @@ $(function () {
             $('.show-img-box').css('display', 'none');
         }
     )
-    $('.small-img ul li').click(function () {
+    // 更换图片
+    $('.small-img ul li').mouseenter(function () {
         var src = '../images/info/' + ($(this).index() + 1) + '-1.jpg';
         $('.big-img').attr('src', src)
         $('.show-img img').attr('src', src)
+        $(this).css('border', '2px solid #f60').siblings().css('border', 'none');
+    })
+    // 选中的规格高亮
+    $('.guige li').click(function () {
+        $(this).addClass('select').siblings().removeClass('select');
+    })
+    // 点击-减少数量
+    $('.less').click(function () {
+        if ($('.produceNum').val() != 0) {
+            $('.produceNum').val($('.produceNum').val() - 1)
+        }
+    })
+    // 点击+添加数量
+    $('.more').click(function () {
+        if ($('.produceNum').val()=="") {
+            $('.produceNum').val(1)
+        }else{
+            $('.produceNum').val(parseInt($('.produceNum').val()) + 1)
+        }
     })
 })
