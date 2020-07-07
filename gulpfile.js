@@ -21,7 +21,7 @@ const uglify = require('gulp-uglify');
 // 导入服务器开启工具
 const webserver = require('gulp-webserver');
 // 导入转义sass的工具
-const scss=require('gulp-sass');
+const scss = require('gulp-sass');
 
 
 // 关于lib的移动规则
@@ -41,6 +41,13 @@ const delHandler = () => {
 // 关于css的压缩规则
 const cssHandler = () => {
     return gulp.src('./src/css/*.css')
+        .pipe(autoprefixer())
+        .pipe(cssmin())
+        .pipe(gulp.dest('./dist/css'));
+}
+// 关于sass的压缩规则
+const sassHandler = () => {
+    return gulp.src('./src/sass/*.scss')
         .pipe(scss())
         .pipe(autoprefixer())
         .pipe(cssmin())
@@ -54,11 +61,11 @@ const htmlHandler = () => {
             // 移除所有空格
             // 压缩页面里的css
             // 压缩页面里的js
-            // removeAttritubeQuotes: true, removeComments: true
-            // , collapseWhitespace: true
-            // , minifyCSS: true
-            // , minifyJS: true
-            // , collapseBooleanAttributes: true
+            removeAttritubeQuotes: true, removeComments: true
+            , collapseWhitespace: true
+            , minifyCSS: true
+            , minifyJS: true
+            , collapseBooleanAttributes: true
         }))
         .pipe(gulp.dest('./dist/pages'));
 }
@@ -92,11 +99,12 @@ const watchHandler = () => {
     gulp.watch('./src/pages/*.html', htmlHandler);
     gulp.watch('./src/images/**', imagesHandler);
     gulp.watch('./src/lib/**', libHandler)
+    gulp.watch('./src/sass/*.scss', sassHandler);
 }
 
 module.exports.default = gulp.series(
     delHandler,
-    gulp.parallel(libHandler, imagesHandler, cssHandler, jsHandler, htmlHandler),
+    gulp.parallel(libHandler, imagesHandler, sassHandler, cssHandler, jsHandler, htmlHandler),
     webserverHandler,
     watchHandler
 )
