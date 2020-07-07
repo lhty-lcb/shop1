@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
     <title>苏宁易购</title>
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/public.css">
@@ -16,8 +17,8 @@
 
 <body>
     <div id="box">
+        <!-- 导航栏 -->
         <div id="nav" class="container-fluid">
-            <!-- 导航栏 -->
             <div class="nav-con">
                 <ul>
                     <li style="margin-left: 10px;">网站导航</li>
@@ -26,12 +27,22 @@
                     <li><em class="address-icon"></em><span>深圳</span></li>
                 </ul>
                 <ol>
-                    <li>请登录</li>
-                    <li>注册有礼</li>
+                    <li class="nav-login">请登录</li>
+                    <li class="nav-register">注册有礼</li>
                     <li>我的订单</li>
                     <li>我的易购</li>
                     <li>苏宁会员</li>
-                    <li>购物车</li>
+                    <li class="car">购物车
+                        <a href="javascript:;" class="car-a">购物车</a>
+                        <div class="nav-car">
+                            <div class="car-box">
+                                <div class="img"></div>
+                                <div>不要让您的购物车空着哦，快去逛逛吧</br>如果您已添加过宝贝，那就赶紧登录查看吧
+                                </div>
+                                <a href="javascript:;" class="btn btn-warning">登录</a>
+                            </div>
+                        </div>
+                    </li>
                     <li>易付宝</li>
                     <li>企业采购</li>
                     <li>手机苏宁</li>
@@ -246,7 +257,7 @@
                         </div>
                         <p>Hi,你好</p>
                         <div class="btn">
-                            <a href="javascript:;" class="register">新人有礼</a>
+                            <a href="javascript:;" class="new-register">新人有礼</a>
                             <a href="javascript:;" class="super"></a>
                         </div>
                         <div class="ling">
@@ -1150,7 +1161,65 @@
                 </div>
             </div>
         </div>
-        <!-- <div id="nav-right"></div> -->
+    </div>
+    <!-- <div id="nav-right"></div> -->
+    <!-- 登录页面 -->
+    <div class="login">
+        <div class="login-con">
+            <div class="lg-re">
+                <div class="lg">登录</div>
+                <div class="re">注册</div>
+                <span class="cancel">X</span>
+            </div>
+            <div class="war">使用苏宁易购账号登录
+                <i class="war-icon"></i>
+            </div>
+            <form action="http://www.baidu.com" method="POST">
+                <div class="name-box">
+                    <input type="text" name="username" id="username" placeholder="用户名/手机/邮箱/门店会员卡号">
+                    <i></i>
+                </div>
+                <div class="pass-box">
+                    <input type="password" name="userpass" id="userpass" placeholder="密码">
+                    <i></i>
+                </div>
+                <div class="msg-box">
+                    <input type="checkbox" name="rem" id="rem" checked><label for="rem" id="remMsg">自动登录</label>
+                    <span>忘记密码？</span>
+                </div>
+                <input type="button" id="login-btn" value="登录">
+            </form>
+        </div>
+    </div>
+    
+    <!-- 注册页面 -->
+    <div class="register">
+        <div class="reg-con login-con">
+            <div class="lg-re">
+                <div class="lg">登录</div>
+                <div class="re">注册</div>
+                <span class="cancel">X</span>
+            </div>
+            <form action="" method="POST">
+                <div class="phone-box">
+                    <label for="phone">手机号码</label>
+                    <input type="text" name="phone" id="phone" placeholder="请输入手机号" `maxlength="11">
+                </div>
+                <div class="check-box">
+                    <label for="check">手机验证码</label>
+                    <input type="text" name="check" id="check" placeholder="请输入手机验证码" maxlength="4">
+                    <input type="button" class="get-check-code" value="获取验证码">
+                </div>
+                <div class="set-pass-box">
+                    <label for="set-pass">设置密码</label>
+                    <input type="password" name="set-pass" id="set-pass" placeholder="请输入密码">
+                </div>
+                <div class="msg-box">
+                    <span id="agreeMsg"><input type="checkbox" name="agree" id="agree">《苏宁会员章程》《易付宝协议》《苏宁隐私政策》《易付宝隐私政策》及《苏宁联盟在线协议》</span>
+                </div>
+                <input type="button" id="reg-btn" value="提交注册">
+            </form>
+        </div>
     </div>
 </body>
 

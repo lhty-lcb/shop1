@@ -1,4 +1,8 @@
 window.onload = function () {
+    window.history.replaceState(null, null, window.location.href);
+    var div = document.createElement('div');
+    div.className = "shadow";
+    $('body').append(div);
     var mySwiper = new Swiper('.swiper-container', {
         loop: true,
         autoplay: 2000,
@@ -82,16 +86,15 @@ window.onload = function () {
             }, 8)
         }
     }
-    // https://ds.suning.com/ds/his/new/-hao-0-1_0-autoComplateCallback_184b31b125a59d8c382d3d8382d23350.jsonp?callback=autoComplateCallback_184b31b125a59d8c382d3d8382d23350&_=1593854098216
     $('.search').on('keyup', function () {
-        $('.search-list').css('display','block')
+        $('.search-list').css('display', 'block')
         var text = $('.search').eq(0).val();
         var cbName = "lcb" + Math.random().toString().slice(2) + (new Date).getTime();
         $.ajax({
             url: 'https://ds.suning.com/ds/his/new/-' + text + '-0-1_0-' + cbName + '.jsonp?',
             dataType: 'jsonp',
-            jsonpCallback:cbName,
-            success:function(data){
+            jsonpCallback: cbName,
+            success: function (data) {
                 var ul = $('.search-list');
                 ul.empty();
                 $.each(data.words, function (index, value) {
@@ -99,11 +102,58 @@ window.onload = function () {
                         ul.append("<li>" + value.keyword + "</li>");
                     }
                 })
-                $(".search-list li").click(function(){
+                $(".search-list li").click(function () {
                     $('.search').eq(0).val($(this).text())
-                    $('.search-list').css('display','none')
+                    $('.search-list').css('display', 'none')
                 })
             }
         })
+    })
+    $('.car').mouseenter(function () {
+        $('.nav-car').slideDown('fast');
+    })
+    $('.car').mouseleave(function () {
+        $('.nav-car').slideUp('fast');
+    })
+    $('.btn-warning').click(function () {
+        $('.nav-car').css('display', 'none');
+        var top = (document.documentElement.clientHeight - 380) / 2;
+        var left = (document.documentElement.clientWidth - 352) / 2;
+        $('.login').css({ 'display': 'block', 'left': left, 'top': top })
+        $('.shadow').css('display','block');
+    })
+
+    $(window).resize(function () {
+        var top = (document.documentElement.clientHeight - 380) / 2;
+        var left = (document.documentElement.clientWidth - 352) / 2;
+        $('.login').css({ 'left': left, 'top': top })
+        $('.register').css({ 'left': left, 'top': top })
+    })
+    $('.cancel').click(function () {
+        $('.login').css('display', 'none');
+        $('.shadow').css('display', 'none');
+        $('.register').css('display', 'none');
+    })
+    $('.re').click(function () {
+        var top = (document.documentElement.clientHeight - 380) / 2;
+        var left = (document.documentElement.clientWidth - 352) / 2;
+        $('.login').css('display', 'none');
+        $('.register').css('display', 'block');
+        $('.register').css({ 'left': left, 'top': top })
+        $('.shadow').css('display','block');
+    })
+    $('.lg').click(function () {
+        var top = (document.documentElement.clientHeight - 380) / 2;
+        var left = (document.documentElement.clientWidth - 352) / 2;
+        $('.login').css('display', 'block');
+        $('.register').css('display', 'none');
+        $('.login').css({ 'left': left, 'top': top })
+        $('.shadow').css('display','block');
+    })
+    $('.nav-login').click(function(){
+        $('.lg').trigger('click');
+    })
+    $('.nav-register').click(function(){
+        $('.re').trigger('click');
     })
 } 
