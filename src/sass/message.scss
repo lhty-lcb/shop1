@@ -1,6 +1,43 @@
-body{
-    background-color: re;
-    div{
-        font-size: 12px;
+#info{
+    width: 100%;  
+    .info-con{
+        margin: 0 auto;
+        width: 1190px;
+        height: 1094px;
+        margin-top: 10px;        
+        .img-zoom{
+            width: 400px;
+            height: 482px;
+            background-color: rebeccapurple;           
+            .big-img{
+                width: 400px;
+                height: 400px;
+                img{
+                    width: 400px;
+                    height: 400px;
+                }
+                position: relative;
+                .show-img-box{
+                    width: 400px;
+                    height: 400px;
+                    overflow: hidden;
+                    position: absolute;
+                    right: -400px;
+                    top: 0;
+                    .show-img{
+                        width: 800px;
+                        height: 800px;
+                        img{
+                            width: 800px;
+                            height: 800px;
+                        }
+                    }
+                }
+            }
+            .small-img{
+                width: 340px;
+                height: 64px;
+            }
+        }
     }
 }
