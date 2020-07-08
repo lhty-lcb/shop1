@@ -1,6 +1,10 @@
 window.onload = function () {
     // 防止提示保存数据的弹出框
     window.history.replaceState(null, null, window.location.href);
+    // 判断是否有cookie
+    if(getCookie(document.cookie,'username')){
+        $('.nav-register').css('display','none');
+    }
     // 轮播图轮播
     var mySwiper = new Swiper('.swiper-container', {
         loop: true,
@@ -167,7 +171,39 @@ window.onload = function () {
     $('.nav-register').click(function () {
         $('.re').trigger('click');
     })
-    $('img').click(function(){
-        location.href='./message.html';
+    // 点击图片跳转到详情页面
+    $('img').click(function () {
+        location.href = './message.html';
+    })
+    // 点击选中checkbox
+    $('#agree').click(function () {
+        if (!$(this).attr('check') || $(this).attr('check') == 'false') {
+            $(this).attr('check', true);
+        } else {
+            $(this).attr('check', false);
+        }
+    })
+    // 点击注册按钮注册
+    $('#reg-btn').click(function () {
+        var phone = $('#phone').val();
+        var check = $('#check').val();
+        var setPass = $('#set-pass').val();
+        if(!phone){
+            alert('请填写电话号码');
+        }else{
+            if(!check){
+                alert('请填写验证码');
+            }else{
+                if(!setPass){
+                    alert('请设置密码');
+                }else{
+                    if(!$('#agree').attr('check') || $('#agree').attr('check') == 'false'){
+                        alert('请先勾选同意协议');
+                    }else{
+                        register(phone,check,setPass);
+                    }
+                }
+            }
+        }
     })
 } 

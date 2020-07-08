@@ -1,1 +1,1 @@
-"use strict";
+"use strict";var register=function(o,e,s){console.log(o,e,s);var t="?phone="+o+"&check="+e+"&setPass="+s;$.ajax({url:"http://localhost/shop7.4/shop1/dist/interface/adduser.php"+t,dataType:"jsonp",success:function(e){alert("注册成功"),setCookie("username",o),location.reload()}})},login=function(){};
