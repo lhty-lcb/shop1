@@ -4,7 +4,8 @@
         margin: 0 auto;
         width: 1190px;
         height: 500px;
-        margin-top: 10px;        
+        margin-top: 10px;
+        position: relative;
         .img-zoom{
             width: 400px;
             height: 482px;
@@ -278,4 +279,16 @@
             }
         }
     }
+}
+.tip{
+    position: fixed;
+    font-size: 26px;
+    background-color: #f60;
+    padding: 10px;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    color:#fff;
+    border-radius: 10px;
+    display: none;
 }

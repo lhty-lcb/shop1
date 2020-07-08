@@ -104,8 +104,14 @@ $(function () {
         $(this).css('border', '2px solid #f60').siblings().css('border', 'none');
     })
     // 选中的规格高亮
+    var guige = '';
+    var img = '';
+    var id = 0;
     $('.guige li').click(function () {
         $(this).addClass('select').siblings().removeClass('select');
+        guige = $(this).children().eq(1).text();
+        img = $(this).children().eq(0).attr('src');
+        id = $(this).index();
     })
     // 点击-减少数量
     $('.less').click(function () {
@@ -115,10 +121,33 @@ $(function () {
     })
     // 点击+添加数量
     $('.more').click(function () {
-        if ($('.produceNum').val()=="") {
+        if ($('.produceNum').val() == "") {
             $('.produceNum').val(1)
-        }else{
+        } else {
             $('.produceNum').val(parseInt($('.produceNum').val()) + 1)
+        }
+    })
+    // 点击加入购物车
+    $('.add-car').click(function () {
+        if (guige != '') {
+            var name = $('.info-message').children().eq(0).text();
+            var price = parseFloat($('.num').text()).toFixed(2);
+            var num = $('.produceNum').val();
+            var url = 'http://localhost/shop7.4/shop1/dist/interface/addwq.php';
+            var msg = '?id=' + id + '&name=' + 12 + '&price=' + price + '&guige=' + guige + '&img=' + img + '&num=' + num;
+            $.ajax({
+                url: url + msg,
+                dataType: 'jsonp',
+                success: function (data) {
+                    var top = (document.documentElement.clientHeight - 124) / 2;
+                    var left = (document.documentElement.clientWidth - 57) / 2;
+                    $('.tip').fadeIn();
+                    $('.tip').css({ 'left': left, 'top': top })
+                    setTimeout(function () {
+                        $('.tip').fadeOut();
+                    }, 1000)
+                }
+            })
         }
     })
 })

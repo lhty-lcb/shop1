@@ -24,6 +24,12 @@ const webserver = require('gulp-webserver');
 const scss = require('gulp-sass');
 
 
+//关于interface的移动规则
+// const intHandler = () => {
+//     return gulp.src('./src/interface/**')
+//         .pipe(gulp.dest('./dist/interface'));
+// }
+
 // 关于lib的移动规则
 const libHandler = () => {
     return gulp.src('./src/lib/**')
@@ -100,6 +106,7 @@ const watchHandler = () => {
     gulp.watch('./src/images/**', imagesHandler);
     gulp.watch('./src/lib/**', libHandler)
     gulp.watch('./src/sass/*.scss', sassHandler);
+    // gulp.watch('./src/interface/**', intHandler);
 }
 
 module.exports.default = gulp.series(
