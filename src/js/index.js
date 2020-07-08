@@ -167,4 +167,7 @@ window.onload = function () {
     $('.nav-register').click(function () {
         $('.re').trigger('click');
     })
+    $('img').click(function(){
+        location.href='./message.html';
+    })
 } 

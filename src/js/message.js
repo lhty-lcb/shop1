@@ -111,6 +111,7 @@ $(function () {
         if ($(this).hasClass('select')) {
             $(this).removeClass('select');
             guige = '';
+            $('.num').html('37.80<i>¥</i>');
         } else {
             $(this).addClass('select').siblings().removeClass('select');
             guige = $(this).children().eq(1).text();
@@ -118,6 +119,16 @@ $(function () {
             var tem = img.match(/\d+/);
             img = img.replace(/\d/, tem[0] + '-1')
             id = $(this).index();
+            switch ($(this).index()) {
+                case 0:
+                    $('.num').html('37.80<i>¥</i>'); break;
+                case 1:
+                    $('.num').html('47.80<i>¥</i>'); break;
+                case 2:
+                    $('.num').html('57.10<i>¥</i>'); break;
+                case 3:
+                    $('.num').html('67.80<i>¥</i>'); break;
+            }
         }
     })
     // 点击-减少数量
@@ -150,24 +161,24 @@ $(function () {
                     // 弹出一个提示框，并定位到屏幕中间
                     var top = (document.documentElement.clientHeight - $('.tip').height()) / 2;
                     var left = (document.documentElement.clientWidth - $('.tip').width()) / 2;
-                    $('.tip').css({'display':'none' ,'left': left, 'top': top }).fadeIn();
+                    $('.tip').css({ 'left': left, 'top': top }).fadeIn();
                     if (data.code == 1) {
                         $('.tip').addClass('addsuccess').removeClass('addfail').text('添加成功');
                     } else {
                         $('.tip').addClass('addfail').removeClass('addsuccess').text('添加失败');
                     }
-                    $('.tip').attr('timer',setTimeout(function () {
+                    $('.tip').attr('timer', setTimeout(function () {
                         $('.tip').fadeOut();
                     }, 1000))
                 }
             })
         } else {
             clearTimeout($('.tip').attr('timer'));
-            $('.tip').fadeIn().addClass('addfail').text('请先选择一个规格');
-            var top = (document.documentElement.clientHeight - $('.tip').height()) / 2;
-            var left = (document.documentElement.clientWidth - $('.tip').width()) / 2;
-            $('.tip').css({'display':'none' , 'left': left, 'top': top });
-            $('.tip').attr('timer',setTimeout(function () {
+            $('.tip').slideDown().addClass('addfail').text('请先选择一个规格');
+            var top = (document.documentElement.clientHeight - 57) / 2;
+            var left = (document.documentElement.clientWidth - $('.tip').outerWidth()) / 2;
+            $('.tip').css({ 'left': left, 'top': top });
+            $('.tip').attr('timer', setTimeout(function () {
                 $('.tip').fadeOut();
             }, 1000))
         }

@@ -3,6 +3,7 @@ require('./model/_connect.php');
 
 $id = $_REQUEST['id'];
 $type = $_REQUEST['type'];
+$cb=$_REQUEST['callback'];
 
 $sql = "SELECT * FROM `cart` WHERE `product_id`='$id'";
 $res = mysqli_query($conn,$sql);
@@ -20,8 +21,10 @@ if($type=='add'){
 
 $result = mysqli_query($conn,$sql);
 if($result){
-	echo json_encode(array("code"=>1));
+	$json=json_encode(array("code"=>1));
+	echo "$cb($json)";
 }else{
-	echo json_encode(array("code"=>0));
+	$json=json_encode(array("code"=>0));
+	echo "$cb($json)";
 }
 ?>

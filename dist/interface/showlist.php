@@ -1,5 +1,6 @@
 <?php
 require('./model/_connect.php');
+$cb=$_REQUEST['callback'];
 
 //书写sql语句
 $sql = "SELECT * FROM cart";
@@ -8,9 +9,11 @@ $sql = "SELECT * FROM cart";
 $result = mysqli_query($conn,$sql);
 if(mysqli_num_rows($result)>0){	
 	$arr = mysqli_fetch_all($result,MYSQL_ASSOC);
-	echo json_encode(array("code"=>1,"data"=>$arr));
+	$json=json_encode(array("code"=>1,"data"=>$arr));
+	echo "$cb($json)";
 }else{	
-	echo json_encode(array("code"=>0));
+	$json=json_encode(array("code"=>0));
+	echo "$cb($json)";
 }
 
 
