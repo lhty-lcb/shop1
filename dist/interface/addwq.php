@@ -15,8 +15,8 @@ require('./model/_connect.php');
         $rows = mysqli_num_rows($res);
         if ($rows > 0) {
             $row = mysqli_fetch_assoc($res);
-            $num = $row['product_num'] + 1;
-            $sql = "UPDATE `cart` SET `product_num`=$num WHERE `product_id`=$id";
+            $nownum = $row['product_num'] + $num;
+            $sql = "UPDATE `cart` SET `product_num`=$nownum WHERE `product_id`=$id";
         } else {
             $sql = "INSERT INTO `cart`(product_id,product_name,product_img,product_price,product_num,product_guige) VALUES ('$id','$name','$img','$price','$num','$guige')";
 
