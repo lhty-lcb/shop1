@@ -427,19 +427,23 @@ li{
     margin-left: 10px;
     position: relative;
 }
-.header-con .search-div .search-icon{
+.header-con .search-div .icon-sousuo{
     float: left;
     position: relative;
     left: 0;
-    top: 3px;
+    top: -4px;
     margin-right: 5px;
+    font-size: 20px;
+    background: none!important;
 }
 .header-con .search-div .search{
     border: none;
     outline: none;
-    font-size: 12px;
-    height: 18px;
+    font-size: 18px;
+    height: 21px;
     width: 370px;
+    padding-left: 10px;
+    font-weight: lighter;
 }
 .header-con .search-div .search-list{
     width: 98%;
@@ -650,6 +654,49 @@ li{
     width: 170px;
     height: 170px;
     text-align: center;
+}
+#pic .pic-right .middle {
+    position: relative;
+    width: 170px;
+    height: 145px;
+    padding: 0 12px;
+    overflow: hidden;
+}
+#pic .pic-right .middle ul{
+    width: 145px;
+    height: 145px;
+    margin: 0 auto;
+    position: relative;
+    left: 0;
+    top: 0;
+}
+#pic .pic-right .middle li{
+    width: 150px;
+    height: 48px;
+    font-size: 12px;
+    line-height: 18px;
+}
+#pic .pic-right .middle li span{
+    font-size: 12px;
+    color: #F60;
+}
+#pic .pic-right .bottom{
+    padding-left: 1px;
+}
+#pic .pic-right .bottom li{
+    width: 56px;
+    height: 78px;
+    text-align: center;
+    padding-top: 10px;
+    float: left;
+    border: 1px solid #f2f2f2;
+    font-size: 12px;
+}
+#pic .pic-right .bottom li b{
+    display: inline-block;
+    font-size: 24px;
+    width: 56px;
+    color: #f90;
 }
 #pic .pic-right .top .logo{
     width: 52px;

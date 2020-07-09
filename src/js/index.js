@@ -7,13 +7,26 @@ $(function () {
         if (user) {
             islogin = true;
             $('.nav-register').css('display', 'none');
-            $('.nav-login').text('欢迎您，' + user).css('width','160');
-            $('.btn.btn-warning').text('点击进入我的购物车').attr('href', './shop.html').prev().css('display','none').prev().css({'background':'url("../images/nav/1.jpg")','background-size':'150px 96px'});
+            $('.nav-login').text('欢迎您，' + user).css('width', '160');
+            $('.btn.btn-warning').text('点击进入我的购物车').attr('href', './shop.html').prev().css('display', 'none').prev().css({ 'background': 'url("../images/nav/1.jpg")', 'background-size': '150px 96px' });
+            $('.nav-list').click(function () {
+                location.href = './shop.html';
+            })
         }
     }
     checkCookie();
     // 防止提示保存数据的弹出框
     window.history.replaceState(null, null, window.location.href);
+    // 热门开始移动
+    setInterval(() => {
+        var ulTop=parseFloat($('.pic-con .middle ul').css('top'));
+        $('.pic-con .middle ul').animate({
+            top:(ulTop-144)+'px'
+        },1000,function(){
+            $('.pic-con .middle ul').css('top',0)
+        });
+    }, 3000);
+
     // 轮播图轮播
     var mySwiper = new Swiper('.swiper-container', {
         loop: true,
@@ -141,8 +154,8 @@ $(function () {
             var left = (document.documentElement.clientWidth - 352) / 2;
             $('.login').css({ 'display': 'block', 'left': left, 'top': top })
             $('.shadow').css('display', 'block');
-        }else{
-            location.href='./shop.html';
+        } else {
+            location.href = './shop.html';
         }
     })
     // 当网页的尺寸改变的时候，更改div的位置

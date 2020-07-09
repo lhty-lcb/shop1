@@ -1,5 +1,6 @@
 $(function () {
     // 点击注册按钮注册
+    var ip = '10.36.133.84';
     $('#reg-btn').click(function () {
         var phone = $('#phone').val();
         var check = $('#check').val();
@@ -44,31 +45,35 @@ $(function () {
 
     // 注册功能
     var register = function (phone, check, setPass) {
-        var url = 'http://localhost/shop7.4/shop1/dist/interface/adduser.php';
+        var url = '../interface/adduser.php';
         var msg = '?phone=' + phone + '&check=' + check + '&setPass=' + setPass;
         $.ajax({
             url: url + msg,
             dataType: 'jsonp',
             success: function (data) {
-                alert('注册成功');
-                setCookie('username', phone);
-                location.reload();
+                if (data.code == 1) {
+                    alert('注册成功');
+                    setCookie('username', phone);
+                    location.reload();
+                } else {
+                    alert('注册失败');
+                }
             }
         })
     }
     // 登录功能
     var login = function (username, userpass) {
-        var url = 'http://localhost/shop7.4/shop1/dist/interface/search_user.php';
+        var url = '../interface/search_user.php';
         var msg = '?username=' + username + '&userpass=' + userpass;
         $.ajax({
-            url:url+msg,
-            dataType:'jsonp',
-            success:function(data){
-                if(data.code==1){
-                    setCookie('username',data.data[0].username);
+            url: url + msg,
+            dataType: 'jsonp',
+            success: function (data) {
+                if (data.code == 1) {
+                    setCookie('username', data.data[0].username);
                     alert('登录成功');
                     location.reload();
-                }else{
+                } else {
                     alert('账号或密码错误');
                 }
             }
