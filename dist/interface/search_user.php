@@ -1,9 +1,11 @@
 <?php
 require('./model/_connect.php');
+$username=$_REQUEST['username'];
+$userpwd=$_REQUEST['userpass'];
 $cb=$_REQUEST['callback'];
 
 //书写sql语句
-$sql = "SELECT * FROM cart";
+$sql = "SELECT * FROM user WHERE username=$username && userpwd=$userpwd";
 
 //执行sql语句
 $result = mysqli_query($conn,$sql);

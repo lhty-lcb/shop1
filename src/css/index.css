@@ -284,14 +284,6 @@ li{
     font-weight: 700px;
     outline: none;
 }
-/* #nav-right{
-    height: 100%;
-    width: 35px;
-    background-color: rgb(51, 51, 51);
-    position: fixed;
-    right: 0;
-    top: 0;
-} */
 /* nav */
 #nav{
     width: 100%;
@@ -320,6 +312,12 @@ li{
 #nav .nav-con ul li{
     width: 78px;
     line-height: 36px;
+}
+#nav .nav-con ul li a{
+    color: black;
+}
+#nav .nav-con ul li a:hover{
+    color: #f60;
 }
 #nav .nav-con  li:hover{
     color: #f60;
@@ -1208,6 +1206,7 @@ li{
     width: 1250px;
     margin: 0 auto;
     padding-left: 30px;
+    background-color: #f2f2f2;
 }
 .footer-cont ul{
     width: 1250px;

@@ -1,4 +1,17 @@
 $(function () {
+    // 判断是否登录了
+    var islogin = false;
+    var checkCookie = function () {
+        // 判断是否有cookie
+        var user = getCookie(document.cookie, 'username');
+        if (user) {
+            islogin = true;
+            $('.nav-register').css('display', 'none');
+            $('.nav-login').text('欢迎您，' + user).css('width','160');
+            $('.btn.btn-warning').text('点击进入我的购物车').attr('href', './shop.html');
+        }
+    }
+    checkCookie();
     var div = document.createElement('div');
     div.className = "shadow";
     $(div).css('height', '1686');
@@ -13,11 +26,15 @@ $(function () {
     })
     // 点击购物车里的登录按钮显示登录框
     $('.btn-warning').click(function () {
-        $('.nav-car').css('display', 'none');
-        var top = (document.documentElement.clientHeight - 380) / 2;
-        var left = (document.documentElement.clientWidth - 352) / 2;
-        $('.login').css({ 'display': 'block', 'left': left, 'top': top })
-        $('.shadow').css('display', 'block');
+        if (!islogin) {
+            $('.nav-car').css('display', 'none');
+            var top = (document.documentElement.clientHeight - 380) / 2;
+            var left = (document.documentElement.clientWidth - 352) / 2;
+            $('.login').css({ 'display': 'block', 'left': left, 'top': top })
+            $('.shadow').css('display', 'block');
+        } else {
+            location.href = './shop.html';
+        }
     })
     // 当网页的尺寸改变的时候，更改div的位置
     $(window).resize(function () {
@@ -52,7 +69,9 @@ $(function () {
     })
     // 点击nav上的登录显示登录框
     $('.nav-login').click(function () {
-        $('.lg').trigger('click');
+        if (!islogin) {
+            $('.lg').trigger('click');
+        }
     })
     // 点击nav上的注册显示注册框
     $('.nav-register').click(function () {
@@ -96,9 +115,91 @@ $(function () {
             $('.show-img-box').css('display', 'none');
         }
     )
-    $('.small-img ul li').click(function () {
+    // 更换图片
+    $('.small-img ul li').mouseenter(function () {
         var src = '../images/info/' + ($(this).index() + 1) + '-1.jpg';
         $('.big-img').attr('src', src)
         $('.show-img img').attr('src', src)
+        $(this).css('border', '2px solid #f60').siblings().css('border', 'none');
+    })
+    // 选中的规格高亮
+    var guige = '';
+    var img = '';
+    var id = 0;
+    $('.guige li').click(function () {
+        if ($(this).hasClass('select')) {
+            $(this).removeClass('select');
+            guige = '';
+            $('.num').html('37.80<i>¥</i>');
+        } else {
+            $(this).addClass('select').siblings().removeClass('select');
+            guige = $(this).children().eq(1).text();
+            img = $(this).children().eq(0).attr('src');
+            var tem = img.match(/\d+/);
+            img = img.replace(/\d/, tem[0] + '-1')
+            id = $(this).index();
+            switch ($(this).index()) {
+                case 0:
+                    $('.num').html('37.80<i>¥</i>'); break;
+                case 1:
+                    $('.num').html('47.80<i>¥</i>'); break;
+                case 2:
+                    $('.num').html('57.10<i>¥</i>'); break;
+                case 3:
+                    $('.num').html('67.80<i>¥</i>'); break;
+            }
+        }
+    })
+    // 点击-减少数量
+    $('.less').click(function () {
+        if ($('.produceNum').val() != 0) {
+            $('.produceNum').val($('.produceNum').val() - 1)
+        }
+    })
+    // 点击+添加数量
+    $('.more').click(function () {
+        if ($('.produceNum').val() == "") {
+            $('.produceNum').val(1)
+        } else {
+            $('.produceNum').val(parseInt($('.produceNum').val()) + 1)
+        }
+    })
+    // 点击加入购物车
+    $('.add-car').click(function () {
+        if (guige != '') {
+            var name = $('.info-message').children().eq(0).text();
+            var price = parseFloat($('.num').text()).toFixed(2);
+            var num = $('.produceNum').val();
+            var url = 'http://localhost/shop7.4/shop1/dist/interface/addwq.php';
+            var msg = '?id=' + id + '&name=' + name + '&price=' + price + '&guige=' + guige + '&img=' + img + '&num=' + num;
+            $.ajax({
+                url: url + msg,
+                dataType: 'jsonp',
+                success: function (data) {
+                    clearTimeout($('.tip').attr('timer'));
+                    // 弹出一个提示框，并定位到屏幕中间
+                    var top = (document.documentElement.clientHeight - $('.tip').height()) / 2;
+                    var left = (document.documentElement.clientWidth - $('.tip').width()) / 2;
+                    $('.tip').css({ 'left': left, 'top': top }).fadeIn();
+                    if (data.code == 1) {
+                        $('.tip').addClass('addsuccess').removeClass('addfail').text('添加成功');
+                    } else {
+                        $('.tip').addClass('addfail').removeClass('addsuccess').text('添加失败');
+                    }
+                    $('.tip').attr('timer', setTimeout(function () {
+                        $('.tip').fadeOut();
+                    }, 1000))
+                }
+            })
+        } else {
+            clearTimeout($('.tip').attr('timer'));
+            $('.tip').slideDown().addClass('addfail').text('请先选择一个规格');
+            var top = (document.documentElement.clientHeight - 57) / 2;
+            var left = (document.documentElement.clientWidth - $('.tip').outerWidth()) / 2;
+            $('.tip').css({ 'left': left, 'top': top });
+            $('.tip').attr('timer', setTimeout(function () {
+                $('.tip').fadeOut();
+            }, 1000))
+        }
     })
 })

@@ -52,3 +52,9 @@ i{
     width: 390px;
     height: 382px;
 }
+/* 文本溢出省略号显示 */
+.text_ellipsis{
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
