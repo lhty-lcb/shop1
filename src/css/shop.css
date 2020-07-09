@@ -18,6 +18,11 @@ em {
 #car table .proName{
     width: 400px;
     text-align: left;
+    cursor: pointer;
+}
+#car table .proName:hover{
+    text-decoration: underline!important;
+    color: blue;
 }
 #car h1{
     text-align: center;
@@ -37,4 +42,7 @@ em {
 #car tr td:nth-of-type(4) em:first-of-type{
     width: 24px;
     display: inline-block;
+}
+.nav-register{
+    display: none;
 }

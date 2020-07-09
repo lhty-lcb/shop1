@@ -1,4 +1,17 @@
 $(function () {
+    // 判断是否登录了
+    var islogin = false;
+    var checkCookie = function () {
+        // 判断是否有cookie
+        var user = getCookie(document.cookie, 'username');
+        if (user) {
+            islogin = true;
+            $('.nav-register').css('display', 'none');
+            $('.nav-login').text('欢迎您，' + user).css('width','160');
+            $('.btn.btn-warning').text('点击进入我的购物车').attr('href', './shop.html');
+        }
+    }
+    checkCookie();
     var div = document.createElement('div');
     div.className = "shadow";
     $(div).css('height', '1686');
@@ -13,11 +26,15 @@ $(function () {
     })
     // 点击购物车里的登录按钮显示登录框
     $('.btn-warning').click(function () {
-        $('.nav-car').css('display', 'none');
-        var top = (document.documentElement.clientHeight - 380) / 2;
-        var left = (document.documentElement.clientWidth - 352) / 2;
-        $('.login').css({ 'display': 'block', 'left': left, 'top': top })
-        $('.shadow').css('display', 'block');
+        if (!islogin) {
+            $('.nav-car').css('display', 'none');
+            var top = (document.documentElement.clientHeight - 380) / 2;
+            var left = (document.documentElement.clientWidth - 352) / 2;
+            $('.login').css({ 'display': 'block', 'left': left, 'top': top })
+            $('.shadow').css('display', 'block');
+        } else {
+            location.href = './shop.html';
+        }
     })
     // 当网页的尺寸改变的时候，更改div的位置
     $(window).resize(function () {
@@ -52,7 +69,9 @@ $(function () {
     })
     // 点击nav上的登录显示登录框
     $('.nav-login').click(function () {
-        $('.lg').trigger('click');
+        if (!islogin) {
+            $('.lg').trigger('click');
+        }
     })
     // 点击nav上的注册显示注册框
     $('.nav-register').click(function () {

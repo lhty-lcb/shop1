@@ -23,7 +23,11 @@ const webserver = require('gulp-webserver');
 // 导入转义sass的工具
 const scss = require('gulp-sass');
 
-
+// 关于lib的移动规则
+const intHandler = () => {
+    return gulp.src('./src/interface/**')
+        .pipe(gulp.dest('./dist/interface'));
+}
 // 关于lib的移动规则
 const libHandler = () => {
     return gulp.src('./src/lib/**')
@@ -104,7 +108,7 @@ const watchHandler = () => {
 
 module.exports.default = gulp.series(
     delHandler,
-    gulp.parallel(libHandler, imagesHandler, sassHandler, cssHandler, jsHandler, htmlHandler),
+    gulp.parallel(libHandler, imagesHandler, sassHandler, cssHandler, jsHandler, htmlHandler,intHandler),
     webserverHandler,
     watchHandler
 )

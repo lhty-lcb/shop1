@@ -2,14 +2,34 @@ $(function () {
     // 购物车功能
     function Car() {
         this.init = function () {
-            this.loadMsg();
-            this.btnAdd = true;
+            if (this.checkCookie()) {
+                this.loadMsg();
+                this.btnAdd = true;
+            } else {
+                alert('请先登录');
+            }
+        }
+        this.checkCookie = function () {
+            // 判断是否有cookie
+            var user = getCookie(document.cookie, 'username');
+            if (user) {
+                $('.nav-register').css('display', 'none');
+                $('.nav-login').text('欢迎您，' + user).css('width', '160');
+                return true;
+            } else {
+                return false;
+            }
         }
         this.addEvent = function (data) {
             this.btnAddNum = $('.btn.btn-success');
             this.btnReduceNum = $('.btn.btn-warning');
             this.btnMoveFromCar = $('.btn.btn-danger');
+            this.textMsg = $('.proName');
             var that = this;
+            // 点击商品名跳转到详情页面
+            this.textMsg.click(function(){
+                location.href='./message.html';
+            })
             // 绑定商品id
             this.product = $('table tr');
             for (var i = 1; i < this.product.length; i++) {
