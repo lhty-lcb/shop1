@@ -8,10 +8,14 @@ $(function () {
             islogin = true;
             $('.nav-register').css('display', 'none');
             $('.nav-login').text('欢迎您，' + user).css('width','160');
-            $('.btn.btn-warning').text('点击进入我的购物车').attr('href', './shop.html');
+            $('.btn.btn-warning').text('点击进入我的购物车').attr('href', './shop.html').prev().css('display','none').prev().css({'background':'url("../images/nav/1.jpg")','background-size':'150px 96px'});
+            $('.nav-list').click(function(){
+                location.href='./shop.html';
+            })
         }
     }
     checkCookie();
+    $('.small-img ul li').eq(0).css('border', '2px solid #f60');
     var div = document.createElement('div');
     div.className = "shadow";
     $(div).css('height', '1686');
@@ -170,7 +174,7 @@ $(function () {
             var name = $('.info-message').children().eq(0).text();
             var price = parseFloat($('.num').text()).toFixed(2);
             var num = $('.produceNum').val();
-            var url = 'http://localhost/shop7.4/shop1/dist/interface/addwq.php';
+            var url = '../interface/addwq.php';
             var msg = '?id=' + id + '&name=' + name + '&price=' + price + '&guige=' + guige + '&img=' + img + '&num=' + num;
             $.ajax({
                 url: url + msg,

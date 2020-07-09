@@ -7,6 +7,7 @@ $(function () {
                 this.btnAdd = true;
             } else {
                 alert('请先登录');
+                location.href = './index.html';
             }
         }
         this.checkCookie = function () {
@@ -27,51 +28,54 @@ $(function () {
             this.textMsg = $('.proName');
             var that = this;
             // 点击商品名跳转到详情页面
-            this.textMsg.click(function(){
-                location.href='./message.html';
+            this.textMsg.click(function () {
+                location.href = './message.html';
             })
             // 绑定商品id
             this.product = $('table tr');
-            for (var i = 1; i < this.product.length; i++) {
+            for (var i = 1; i < this.product.length - 1; i++) {
                 this.product.eq(i).attr('uid', data[i - 1].product_id);
             }
             // 增加数量
             this.btnAddNum.click(function () {
                 $(this).prev().text(parseInt($(this).prev().text()) + 1);
+                that.refreshPrice('add', $(this).parent().prev().prev().text());
                 var uid = $(this).parent().parent().attr('uid');
-                var url = 'http://localhost/shop7.4/shop1/dist/interface/updatewq.php';
+                var url = '../interface/updatewq.php';
                 // 更新数据库
                 that.ajax(uid, 'add', url);
             })
             // 减少数量
             this.btnReduceNum.click(function () {
                 $(this).next().text(parseInt($(this).next().text()) - 1);
+                that.refreshPrice('cut', $(this).parent().prev().prev().text());
                 if ($(this).next().text() == 0) {
                     if (that.checkNum($(this))) {
                         $(this).next().text(parseInt($(this).next().text()) + 1);
+                        that.refreshPrice('add', $(this).parent().prev().prev().text());
                     } else {
                         var uid = $(this).parent().parent().attr('uid');
-                        var url = 'http://localhost/shop7.4/shop1/dist/interface/delwq.php';
+                        var url = '../interface/delwq.php';
                         that.ajax(uid, '', url);
                     }
                 } else {
                     var uid = $(this).parent().parent().attr('uid');
-                    var url = 'http://localhost/shop7.4/shop1/dist/interface/updatewq.php';
+                    var url = '../interface/updatewq.php';
                     that.ajax(uid, 'cut', url);
                 }
                 // 更新数据库
             })
             // 移出购物车
             this.btnMoveFromCar.click(function () {
-                var res = confirm('确定要将商品移除吗？');
+                var res = confirm('此操作不可逆，是否确定要移出购物车？');
                 if (res) {
+                    that.refreshPrice('del',$(this).parent().prev().prev().prev().text(),$(this).parent().prev().children().eq(1).text())
                     $(this).parent().parent().css('display', 'none')
                     $(this).parent().prev().children().eq(1).text(0)
                     var uid = $(this).parent().parent().attr('uid');
-                    var url = 'http://localhost/shop7.4/shop1/dist/interface/delwq.php';
+                    var url = '../interface/delwq.php';
                     that.ajax(uid, '', url);
                 }
-                // 更新数据库
             })
             // 判断商品数量的方法
             this.checkNum = function (btn) {
@@ -92,11 +96,22 @@ $(function () {
                     }
                 })
             }
+            this.refreshPrice = function (type, price, num) {
+                price = parseFloat(price.slice(1));
+                console.log(type, price, num, $('.totalPrice').text())
+                if (type == 'add') {
+                    $('.totalPrice').text('¥' + (parseFloat($('.totalPrice').text().slice(1)) + price).toFixed(2));
+                } else if (type == 'cut') {
+                    $('.totalPrice').text('¥' + (parseFloat($('.totalPrice').text().slice(1)) - price).toFixed(2));
+                } else {
+                    $('.totalPrice').text('¥' + (parseFloat($('.totalPrice').text().slice(1)) - price*num).toFixed(2));
+                }
+            }
         }
         var that = this;
         // 加载的时候渲染数据
         this.loadMsg = function () {
-            var url = 'http://localhost/shop7.4/shop1/dist/interface/showlist.php';
+            var url = '../interface/showlist.php';
             $.ajax({
                 url: url,
                 dataType: 'jsonp',
@@ -110,7 +125,9 @@ $(function () {
                     <th>商品数量</th>
                     <th>移出购物车</th>
                 </tr>`;
+                    var totalPrice = 0;
                     for (var i in data) {
+                        totalPrice += data[i].product_price * data[i].product_num;
                         temp += `<tr>
                         <th>
                             <img src="${data[i].product_img}" alt="">
@@ -128,6 +145,12 @@ $(function () {
                         </td>
                     </tr>`
                     }
+                    temp += `<tr style="display: table-row;">
+                    <th colspan="3" class="white"></th>
+                    <th>总价</th>
+                    <th class="totalPrice">¥${totalPrice.toFixed(2)}</th>
+                    <th class="btn btn-primary" style="width: 110px">结算</th>
+                </tr>`
                     $('table').html(temp);
                     that.addEvent(data);
                 }

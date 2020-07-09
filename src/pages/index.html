@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../css/public.css">
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/idangerous.swiper.css">
+    <link rel="stylesheet" href="../css/iconfont.css">
     <script src="../js/public(my).js"></script>
     <script src="../lib/idangerous.swiper.min.js"></script>
     <script src="../lib/jquery-1.12.4.min.js"></script>
@@ -30,7 +31,7 @@
                 <ol>
                     <li class="nav-login text_ellipsis">请登录</li>
                     <li class="nav-register">注册有礼</li>
-                    <li>我的订单</li>
+                    <li class="nav-list">我的订单</li>
                     <li>我的易购</li>
                     <li>苏宁会员</li>
                     <li class="car">购物车
@@ -57,7 +58,7 @@
                 <img src="../images/header/header-1.gif" alt="">
                 <form action="">
                     <div class="search-div">
-                        <i class="search-icon"></i>
+                        <i class="iconfont search-icon icon-sousuo"></i>
                         <input class="search" type="text">
                         <ul class="search-list"></ul>
                     </div>
@@ -265,6 +266,44 @@
                             <a href="javascript:;" class="yunzuan"></a>
                             <a href="javascript:;" class="quan"></a>
                         </div>
+                    </div>
+                    <div class="middle">
+                        <ul>
+                            <li>
+                                <span>[热门]</span>
+                                美美的一天不能从挠痒痒开始
+                            </li>
+                            <li>
+                                <span>[热门]</span>
+                                有了净味除菌功能，放在冰箱中的食材才更有保障
+                            </li>
+                            <li>
+                                <span>[热门]</span>
+                                提升工作效率，这才是选购笔记本正确姿势
+                            </li>
+                            <li>
+                                <span>[热门]</span>
+                                美美的一天不能从挠痒痒开始
+                            </li>
+                            <li>
+                                <span>[热门]</span>
+                                有了净味除菌功能，放在冰箱中的食材才更有保障
+                            </li>
+                            <li>
+                                <span>[热门]</span>
+                                提升工作效率，这才是选购笔记本正确姿势
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="bottom">
+                        <ul>
+                            <li><b class="iconfont icon-shouji"></b>话费</li>
+                            <li><b class="iconfont icon-shuifei"></b>水电煤</li>
+                            <li><b class="iconfont icon-xinyongka"></b>苏宁卡</li>
+                            <li><b class="iconfont icon-qianbao"></b>理财</li>
+                            <li><b class="iconfont icon-icon-test"></b>分期</li>
+                            <li><b class="iconfont icon-public-welfare"></b>苏宁公益</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -1178,18 +1217,18 @@
             </div>
             <form action="http://www.baidu.com" method="POST">
                 <div class="name-box">
-                    <input type="text" name="username" id="username" placeholder="用户名/手机/邮箱/门店会员卡号">
+                    <input autocomplete="off" type="text" name="username" id="username" placeholder="用户名/手机/邮箱/门店会员卡号">
                     <i></i>
                 </div>
                 <div class="pass-box">
-                    <input type="password" name="userpass" id="userpass" placeholder="密码">
+                    <input autocomplete="off" type="password" name="userpass" id="userpass" placeholder="密码">
                     <i></i>
                 </div>
                 <div class="msg-box">
-                    <input type="checkbox" name="rem" id="rem" checked><label for="rem" id="remMsg">自动登录</label>
+                    <input autocomplete="off" type="checkbox" name="rem" id="rem" checked><label for="rem" id="remMsg">自动登录</label>
                     <span>忘记密码？</span>
                 </div>
-                <input type="button" id="login-btn" value="登录">
+                <input autocomplete="off" type="button" id="login-btn" value="登录">
             </form>
         </div>
     </div>
@@ -1205,21 +1244,21 @@
             <form action="" method="POST">
                 <div class="phone-box">
                     <label for="phone">手机号码</label>
-                    <input type="text" name="phone" id="phone" placeholder="请输入手机号" `maxlength="11">
+                    <input autocomplete="off" type="text" name="phone" id="phone" placeholder="请输入手机号" `maxlength="11">
                 </div>
                 <div class="check-box">
                     <label for="check">手机验证码</label>
-                    <input type="text" name="check" id="check" placeholder="请输入手机验证码" maxlength="4">
-                    <input type="button" class="get-check-code" value="获取验证码">
+                    <input autocomplete="off" type="text" name="check" id="check" placeholder="请输入手机验证码" maxlength="4">
+                    <input autocomplete="off" type="button" class="get-check-code" value="获取验证码">
                 </div>
                 <div class="set-pass-box">
                     <label for="set-pass">设置密码</label>
-                    <input type="password" name="set-pass" id="set-pass" placeholder="请输入密码">
+                    <input autocomplete="off" type="password" name="set-pass" id="set-pass" placeholder="请输入密码">
                 </div>
                 <div class="msg-box">
-                    <span id="agreeMsg"><input type="checkbox" name="agree" id="agree">《苏宁会员章程》《易付宝协议》《苏宁隐私政策》《易付宝隐私政策》及《苏宁联盟在线协议》</span>
+                    <span id="agreeMsg"><input autocomplete="off" type="checkbox" name="agree" id="agree">《苏宁会员章程》《易付宝协议》《苏宁隐私政策》《易付宝隐私政策》及《苏宁联盟在线协议》</span>
                 </div>
-                <input type="button" id="reg-btn" value="提交注册">
+                <input autocomplete="off" type="button" id="reg-btn" value="提交注册">
             </form>
         </div>
     </div>
